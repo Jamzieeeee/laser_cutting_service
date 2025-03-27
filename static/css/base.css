@@ -1,0 +1,26 @@
+.nav-link {
+    text-decoration: none;
+}
+
+#main-header {
+    background-color: darkgreen;
+}
+
+#logo-img {
+    max-height: 50px;
+}
+
+#logo-col {
+    padding: 0;
+}
+
+#nav-col {
+    padding: 0;
+    text-align: center;
+}
+
+@media (min-width: 992px) {
+    #nav-col {
+        width: 100%;
+    }
+}
