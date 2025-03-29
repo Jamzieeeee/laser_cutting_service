@@ -2,6 +2,24 @@
     text-decoration: none;
 }
 
+.cards {
+    padding-top: calc(var(--bs-gutter-x) * .5);
+    padding-bottom: calc(var(--bs-gutter-x) * .5);
+}
+
+.card {
+    border-color: darkgreen;
+}
+
+.card-body {
+    background-color: lightgray;
+}
+
+.card-img-top {
+    object-fit: contain;
+    aspect-ratio: 4 / 3;
+}
+
 #main-header {
     background-color: darkgreen;
 }

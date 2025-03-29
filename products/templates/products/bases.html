@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2>Bases</h2>
+        </div>
+        <div class="row">
+            {% for base in products %}
+            <div class="col-sm-6 col-md-6 col-lg-4 cards">
+                <div class="card h-100">
+                    {% if base.image %}
+                    <a href="">
+                        <img class="card-img-top img-fluid" src="{{ base.image.url }}" alt="{{ base.size }} {{ base.shape }}">
+                    </a>
+                    {% else %}
+                    <a href="">
+                        <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ base.size }} {{ base.shape }}">
+                    </a>
+                    {% endif %}
+                    <div class="card-body">
+                        <h6 class="mb-0">{{ base.size }} {{ base.shape }}</h6>
+                    </div>
+                    <div class="card-footer bg-white text-left">
+                        <div class="row">
+                            <div class="col">
+                                <p class="mb-0">Fit <strong>{{ base.number_per_sheet }} </strong>per sheet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
