@@ -11,13 +11,13 @@
             <div class="col-sm-6 col-md-6 col-lg-4 cards">
                 <div class="card h-100">
                     {% if base.image %}
-                    <a href="">
-                        <img class="card-img-top img-fluid" src="{{ base.image.url }}" alt="{{ base.size }} {{ base.shape }}">
-                    </a>
-                    {% else %}
-                    <a href="">
-                        <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ base.size }} {{ base.shape }}">
-                    </a>
+                        <a href="{% url 'base_detail' base.id %}">
+                            <img class="card-img-top img-fluid" src="{{ base.image.url }}" alt="{{ base.size }} {{ base.shape }}">
+                        </a>
+                        {% else %}
+                        <a href="{% url 'base_detail' base.id %}">
+                            <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ base.size }} {{ base.shape }}">
+                        </a>
                     {% endif %}
                     <div class="card-body">
                         <h6 class="mb-0">{{ base.size }} {{ base.shape }}</h6>
