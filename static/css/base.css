@@ -19,8 +19,15 @@
     text-align: center;
 }
 
+#body-container {
+    padding-top: 56px;
+}
+
 @media (min-width: 992px) {
     #nav-col {
         width: 100%;
+    }
+    #body-container {
+        padding-top: 106px;
     }
 }

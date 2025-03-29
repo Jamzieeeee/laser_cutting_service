@@ -110,8 +110,10 @@
     {% block page_header %}
     {% endblock %}
 
-    {% block content %}
-    {% endblock %}
+    <div id="body-container" class="container-fluid">
+      {% block content %}
+      {% endblock %}
+    </div>
 
     {% block postloadjs %}
     {% endblock %}
