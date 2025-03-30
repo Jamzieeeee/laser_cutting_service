@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2>Materials</h2>
+        </div>
+        <div class="row">
+            {% for material in products %}
+            <div class="col-sm-6 col-md-6 col-lg-4 cards">
+                <div class="card h-100">
+                    {% if material.image %}
+                        <a href="#">
+                            <img class="card-img-top img-fluid" src="{{ material.image.url }}" alt="{{ material.name }}">
+                        </a>
+                        {% else %}
+                        <a href="#">
+                            <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ material.name }}">
+                        </a>
+                    {% endif %}
+                    <div class="card-body">
+                        <h6 class="mb-0">{{ material.name }}</h6>
+                    </div>
+                    <div class="card-footer bg-white text-left">
+                        <div class="row">
+                            <div class="col">
+                                <p class="mb-0"><strong>£{{ material.cost_per_sheet }} </strong>per sheet</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="mb-0">{{ material.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
