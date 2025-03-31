@@ -20,6 +20,10 @@
     aspect-ratio: 4 / 3;
 }
 
+.btn-outline {
+    border-color: darkgreen;
+}
+
 #main-header {
     background-color: darkgreen;
 }
