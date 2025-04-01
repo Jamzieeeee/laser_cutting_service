@@ -22,6 +22,16 @@
 
 .btn-outline {
     border-color: darkgreen;
+    
+}
+
+.btn-filled {
+    color: white;
+    background-color: darkgreen;
+}
+
+.btn:hover {
+    background-color: lightgray;
 }
 
 #main-header {
