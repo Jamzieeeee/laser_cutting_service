@@ -20,9 +20,8 @@
     aspect-ratio: 4 / 3;
 }
 
-.btn-outline {
+.btn {
     border-color: darkgreen;
-    
 }
 
 .btn-filled {
