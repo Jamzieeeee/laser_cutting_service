@@ -1,7 +1,3 @@
-.nav-link {
-    text-decoration: none;
-}
-
 .cards {
     padding-top: calc(var(--bs-gutter-x) * .5);
     padding-bottom: calc(var(--bs-gutter-x) * .5);
@@ -52,6 +48,12 @@
 
 #body-container {
     padding-top: 56px;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 2.25em;
+    }
 }
 
 @media (min-width: 992px) {
