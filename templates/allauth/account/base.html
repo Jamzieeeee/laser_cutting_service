@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
 <html>
   <head>
     <title>{% block head_title %}{% endblock %}</title>
@@ -7,32 +10,27 @@
   </head>
   <body>
     {% block body %}
+      <div class="container">
+        <strong>Menu:</strong>
+        <ul>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+          <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+          {% else %}
+          <li><a href="{% url 'account_login' %}">Sign In</a></li>
+          <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+          {% endif %}
+        </ul>
+      </div>
 
-    {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
-
-    <div>
-      <strong>Menu:</strong>
-      <ul>
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-        {% else %}
-        <li><a href="{% url 'account_login' %}">Sign In</a></li>
-        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-        {% endif %}
-      </ul>
-    </div>
-    {% block content %}
-    {% endblock %}
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-8 col-lg-6 offset-lg-2">
+            {% block content %}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
     {% endblock %}
     {% block extra_body %}
     {% endblock %}

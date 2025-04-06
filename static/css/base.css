@@ -46,6 +46,11 @@
     text-align: center;
 }
 
+#message-col {
+    background-color: black;
+    color: white;
+}
+
 #body-container {
     padding-top: 56px;
 }

@@ -92,9 +92,9 @@
                       <a class="nav-link" aria-current="page" href="{% url 'account_login' %}">Login</a>
                     </li>
                   {% endif %}
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{% url 'cart' %}">My Cart</a>
-                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'cart' %}">My Cart</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -103,14 +103,21 @@
       </div>
     </header>
 
-    {% if messages %}
-      <div class="message-container"></div>
-    {% endif %}
-
-    {% block page_header %}
-    {% endblock %}
-
     <div id="body-container" class="container-fluid">
+      <!--Messages-->
+      <div class="col-12 align-content-center text-center">
+        {% if messages %}
+          <ul class="list-group">
+            {% for message in messages %}
+              <li class="list-group-item bg-dark text-white"><strong>{{message}}</strong></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      {% block page_header %}
+      {% endblock %}
+
       {% block content %}
       {% endblock %}
     </div>
