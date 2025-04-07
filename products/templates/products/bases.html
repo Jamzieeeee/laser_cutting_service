@@ -11,13 +11,9 @@
             <div class="col-sm-6 col-md-6 col-lg-4 cards">
                 <div class="card h-100">
                     {% if base.image %}
-                        <a href="{% url 'base_detail' base.id %}">
-                            <img class="card-img-top img-fluid" src="{{ base.image.url }}" alt="{{ base.size }} {{ base.shape }}">
-                        </a>
-                        {% else %}
-                        <a href="{% url 'base_detail' base.id %}">
-                            <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ base.size }} {{ base.shape }}">
-                        </a>
+                        <img class="card-img-top img-fluid" src="{{ base.image.url }}" alt="{{ base.size }} {{ base.shape }}">
+                    {% else %}
+                        <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ base.size }} {{ base.shape }}">
                     {% endif %}
                     <div class="card-body">
                         <h6 class="mb-0">{{ base.size }} {{ base.shape }}</h6>
@@ -27,6 +23,13 @@
                             <div class="col">
                                 <p class="mb-0">Fit <strong>{{ base.number_per_sheet }} </strong>per sheet</p>
                             </div>
+                            {% for material in materials %}
+                                <div class="col-12">
+                                    <a href="{% url 'base_detail' base.id material.id %}">
+                                        <span>{{ material.name }}</span>
+                                    </a>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

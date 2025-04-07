@@ -8,6 +8,6 @@ class MaterialForm(forms.ModelForm):
 
         fields = []
 
-    material = forms.ModelChoiceField(queryset=Material.objects.all(), to_field_name="id")
+    # material = forms.ModelChoiceField(queryset=Material.objects.all(), to_field_name="id")
 
     quantity = forms.IntegerField(label="Quantity")

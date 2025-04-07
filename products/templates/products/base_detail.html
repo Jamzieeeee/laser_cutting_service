@@ -12,7 +12,7 @@
                         <a href="{{ base.image.url }}" target="_blank">
                             <img class="card-img-top img-fluid" src="{{ base.image.url }}" alt="{{ base.size }} {{ base.shape }}">
                         </a>
-                        {% else %}
+                    {% else %}
                         <a href="">
                             <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ base.size }} {{ base.shape }}">
                         </a>
@@ -21,11 +21,11 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
-                    <p class="mb-0">{{ base.size }} {{ base.shape}}</p>
+                    <p class="mb-0">{{ base.size }} {{ base.shape }}</p>
                     <p class="mt-3">{{ base.description }}</p>
-                    <p class="lead mb-0 text-left font-weight-bold">Price</p>
+                    <p class="lead mb-0 text-left font-weight-bold">£{{ price }} per base</p>
                 </div>
-                <form class="form" action="{% url 'add_to_cart' base.id %}" method="POST">
+                <form class="form" action="{% url 'add_to_cart' base.id material.id %}" method="POST">
                     {% csrf_token %}
                     
                     {{ form|crispy }}
