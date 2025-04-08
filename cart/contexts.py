@@ -16,21 +16,22 @@ def cart_contents(request):
         for material_id, quantity in base_data.items():
             base = get_object_or_404(Base, pk=base_id)
             material = get_object_or_404(Material, pk=material_id)
-            price = (math.ceil(material.cost_per_sheet / base.number_per_sheet))
-            total += quantity * price
+            single_price = (math.ceil(material.cost_per_sheet / base.number_per_sheet)) / 100
+            price = quantity * single_price
+            total += price
             product_count += quantity
             cart_items.append({
                 'base': base,
                 'material': material,
+                'single_price': single_price,
                 'quantity': quantity,
                 'price': price,
+                'total': total,
             })
     
-    print(cart_items)
-
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
-        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
+        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD / 100 - total
     else:
         delivery = 0
         free_delivery_delta = 0
@@ -47,5 +48,4 @@ def cart_contents(request):
         'grand_total': grand_total,
     }
 
-    print(context)
     return context
