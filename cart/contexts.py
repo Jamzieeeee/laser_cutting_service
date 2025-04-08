@@ -1,5 +1,8 @@
 from django.conf import settings
 from decimal import Decimal
+from django.shortcuts import get_object_or_404
+import math
+from products.models import Base, Material
 
 
 def cart_contents(request):
@@ -7,9 +10,26 @@ def cart_contents(request):
     cart_items = []
     total = 0
     product_count = 0
+    cart = request.session.get('cart', {})
+
+    for base_id, base_data in cart.items():
+        for material_id, quantity in base_data.items():
+            base = get_object_or_404(Base, pk=base_id)
+            material = get_object_or_404(Material, pk=material_id)
+            price = (math.ceil(material.cost_per_sheet / base.number_per_sheet))
+            total += quantity * price
+            product_count += quantity
+            cart_items.append({
+                'base': base,
+                'material': material,
+                'quantity': quantity,
+                'price': price,
+            })
+    
+    print(cart_items)
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
-        delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE)
+        delivery = total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
     else:
         delivery = 0
@@ -27,4 +47,5 @@ def cart_contents(request):
         'grand_total': grand_total,
     }
 
+    print(context)
     return context
