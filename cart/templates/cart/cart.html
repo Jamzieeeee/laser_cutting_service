@@ -8,26 +8,37 @@
                 <h2 class="text-end pb-5">My Cart</h2>
                 {% if cart_items %}
                     <div class="table-responsive rounded">
-                        <table class="table table-sm table-hover text-end">
-                            <thead>
-                                <tr>
-                                    <th>Base</th>
-                                    <th>Material</th>
-                                    <th>Unit Price</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            {% for item in cart_items %}
-                                <tr>
-                                    <td>{{ item.base.size }} {{ item.base.shape }}</td>
-                                    <td>{{ item.material.name }}</td>
-                                    <td>£{{ item.unit_price|floatformat:2 }}</td>
-                                    <td>{{ item.quantity }}</td>
-                                    <td>£{{ item.price|floatformat:2 }}</td>
-                                </tr>
-                            {% endfor %}
-                        </table>
+                        <form method="POST" action="" class="form update-form">
+                            {% csrf_token %}
+                            <table class="table table-sm table-hover text-end">
+                                <thead>
+                                    <tr>
+                                        <th>Base</th>
+                                        <th>Material</th>
+                                        <th>Unit Price</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                {% for item in cart_items %}
+                                    <tr>
+                                        <td>{{ item.base.size }} {{ item.base.shape }}</td>
+                                        <td>{{ item.material.name }}</td>
+                                        <td>£{{ item.unit_price|floatformat:2 }}</td>
+                                        <td>
+                                            <div class="input-group input-group-sm">
+                                                <input type="number" name="quantity-{{ item.base.id }}-{{ item.material.id }}" value={{ item.quantity }} 
+                                                min="0" max="999" class="form-control text-end">
+                                            </div>
+                                        </td>
+                                        <td>£{{ item.price|floatformat:2 }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-sm">Update</button>
+                            </div>
+                        </form>
                         <div class="text-end pt-3">
                             <h6><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h6>
                             <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
@@ -58,4 +69,13 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    <script type="text/javascript">
+        $('.update-link').click(function(e) {
+            var form = $('.update-form');
+            form.submit();
+        })
+    </script>
 {% endblock %}
