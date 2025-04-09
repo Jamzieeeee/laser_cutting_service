@@ -8,12 +8,12 @@
                 <h2 class="text-end pb-5">My Cart</h2>
                 {% if cart_items %}
                     <div class="table-responsive rounded">
-                        <table class="table table-sm table-hover">
+                        <table class="table table-sm table-hover text-end">
                             <thead>
                                 <tr>
                                     <th>Base</th>
                                     <th>Material</th>
-                                    <th>Single Price</th>
+                                    <th>Unit Price</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
                                 </tr>
@@ -22,7 +22,7 @@
                                 <tr>
                                     <td>{{ item.base.size }} {{ item.base.shape }}</td>
                                     <td>{{ item.material.name }}</td>
-                                    <td>£{{ item.single_price|floatformat:2 }}</td>
+                                    <td>£{{ item.unit_price|floatformat:2 }}</td>
                                     <td>{{ item.quantity }}</td>
                                     <td>£{{ item.price|floatformat:2 }}</td>
                                 </tr>
@@ -30,11 +30,11 @@
                         </table>
                         <div class="text-end pt-3">
                             <h6><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h6>
-                            <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
+                            <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
                             <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
                             {% if free_delivery_delta > 0 %}
                                 <p class="mb-1 text-danger">
-                                    You could get free delivery by spending <strong>${{ free_delivery_delta }}</strong> more!
+                                    You could get free delivery by spending <strong>£{{ free_delivery_delta|floatformat:2 }}</strong> more!
                                 </p>
                             {% endif %}
                         </div>
@@ -48,10 +48,12 @@
                         </div>
                     </div>
                 {% else %}
-                    <p>Your cart is empty</p>
-                    <a href="{% url 'bases' %}" class="btn btn-outline btn-lg">
-                        <span class="text-uppercase">View our bases</span>
-                    </a>
+                    <div class="text-end">
+                        <p>Your cart is empty</p>
+                        <a href="{% url 'bases' %}" class="btn btn-outline btn-lg">
+                            <span class="text-uppercase">View our bases</span>
+                        </a>
+                    </div>
                 {% endif %}
             </div>
         </div>

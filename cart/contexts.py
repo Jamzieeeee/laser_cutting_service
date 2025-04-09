@@ -16,14 +16,14 @@ def cart_contents(request):
         for material_id, quantity in base_data.items():
             base = get_object_or_404(Base, pk=base_id)
             material = get_object_or_404(Material, pk=material_id)
-            single_price = (math.ceil(material.cost_per_sheet / base.number_per_sheet)) / 100
-            price = quantity * single_price
+            unit_price = (math.ceil(material.cost_per_sheet / base.number_per_sheet)) / 100
+            price = quantity * unit_price
             total += price
             product_count += quantity
             cart_items.append({
                 'base': base,
                 'material': material,
-                'single_price': single_price,
+                'unit_price': unit_price,
                 'quantity': quantity,
                 'price': price,
                 'total': total,
