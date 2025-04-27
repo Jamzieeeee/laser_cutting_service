@@ -50,7 +50,11 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_cart = json.dumps(cart)
+            order.save()
             for base_id, base_data in cart.items():
                 for material_id, quantity in base_data.items():
                     base = get_object_or_404(Base, pk=base_id)
