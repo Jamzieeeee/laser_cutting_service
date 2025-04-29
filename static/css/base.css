@@ -55,6 +55,10 @@
     padding-top: 56px;
 }
 
+input {
+    max-width: 48em;
+}
+
 @media (min-width: 768px) {
     .title {
         font-size: 2.25em;
