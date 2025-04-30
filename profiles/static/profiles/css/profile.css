@@ -1,0 +1,18 @@
+select, 
+select option {
+    color: #000000;
+}
+
+select:invalid,
+select option[value=""] {
+    color: #595c5f !important;
+}
+
+#id_default_country,
+#id_default_country option:not(:first-child) {
+    color: #000;
+}
+
+#id_default_country option:first-child {
+    color: #595c5f;
+}
