@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Base, Material
-from .forms import MaterialForm
+from .forms import BaseForm, BaseDetailForm
 import math
 
 # Create your views here.
@@ -22,7 +22,7 @@ def base_detail(request, base_id, material_id):
 
     price = (math.ceil(material.cost_per_sheet / base.number_per_sheet)) / 100
 
-    form = MaterialForm()
+    form = BaseDetailForm()
 
     context = {
         'base': base,
@@ -42,3 +42,13 @@ def materials(request):
     }
 
     return render(request, 'products/materials.html', context)
+
+
+def add_base(request):
+    form = BaseForm()
+    template = 'products/add_base.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
