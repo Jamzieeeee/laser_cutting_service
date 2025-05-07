@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
+
 from .models import Shape, Base, Material
 from .forms import BaseForm, BaseDetailForm
 import math
@@ -59,7 +61,17 @@ def product_admin(request):
 
 
 def add_base(request):
-    form = BaseForm()
+    if request.method == 'POST':
+        form = BaseForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added base!')
+            return redirect(reverse('add_base'))
+        else:
+            messages.error(request, 'Failed to add base. Please ensure the form is valid.')
+    else:
+        form = BaseForm()
+
     template = 'products/add_base.html'
     context = {
         'form': form,
