@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        {% if request.user.is_superuser %}
+            <div class="row">
+                <div class="col">
+                    <h1>Product Management</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col mt-5">
+                    <h4 class="text-muted">Shapes</h4>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th class="d-none d-sm-table-cell w-100">Description</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for shape in shapes %}
+                                    <tr>
+                                        <td>{{ shape.id }}</td>
+                                        <td>{{ shape.name }}</td>
+                                        <td>{{ shape.description }}</td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm">Edit</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm btn-delete">Delete</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-end">
+                        <a href="#" class="btn btn-filled">Add</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col mt-5">
+                    <h4 class="text-muted">Bases</h4>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Shape</th>
+                                    <th>Size</th>
+                                    <th>No. per Sheet</th>
+                                    <th class="d-none d-sm-table-cell w-100">Description</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for base in bases %}
+                                    <tr>
+                                        <td>{{ base.id }}</td>
+                                        <td>{{ base.shape }}</td>
+                                        <td>{{ base.size }}</td>
+                                        <td>{{ base.number_per_sheet }}</td>
+                                        <td>{{ base.description }}</td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm">Edit</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm btn-delete">Delete</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-end">
+                        <a href="{% url 'add_base' %}" class="btn btn-filled">Add</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col mt-5">
+                    <h4 class="text-muted">Materials</h4>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Cost per Sheet</th>
+                                    <th class="d-none d-sm-table-cell w-100">Description</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for material in materials %}
+                                    <tr>
+                                        <td>{{ material.id }}</td>
+                                        <td>{{ material.name }}</td>
+                                        <td>{{ material.cost_per_sheet }}</td>
+                                        <td>{{ material.description }}</td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm">Edit</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm btn-delete">Delete</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-end">
+                        <a href="#" class="btn btn-filled">Add</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>You do not have permission to perform this operation!</p>
+        {% endif %}
+    </div>
+{% endblock %}

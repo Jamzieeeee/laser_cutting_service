@@ -25,6 +25,12 @@
     background-color: darkgreen;
 }
 
+.btn-delete {
+    color: white;
+    background-color: darkred;
+    border-color: black;
+}
+
 .btn:hover {
     background-color: lightgray;
 }

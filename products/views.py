@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Base, Material
+from .models import Shape, Base, Material
 from .forms import BaseForm, BaseDetailForm
 import math
 
@@ -42,6 +42,20 @@ def materials(request):
     }
 
     return render(request, 'products/materials.html', context)
+
+
+def product_admin(request):
+    shapes = Shape.objects.all()
+    bases = Base.objects.all()
+    materials = Material.objects.all()
+
+    context = {
+        'shapes': shapes,
+        'bases': bases,
+        'materials': materials,
+    }
+
+    return render(request, 'products/product_admin.html', context)
 
 
 def add_base(request):
