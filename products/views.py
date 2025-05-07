@@ -78,3 +78,25 @@ def add_base(request):
     }
 
     return render(request, template, context)
+
+
+def edit_base(request, base_id):
+    base = get_object_or_404(Base, pk=base_id)
+    if request.method == 'POST':
+        form = BaseForm(request.POST, request.FILES, instance=base)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated base!')
+            return redirect(reverse('edit_base', args=[base.id]))
+        else:
+            messages.error(request, 'Failed to update base. Please ensure the form is valid.')
+    else:
+        form = BaseForm(instance=base)
+
+    template = 'products/edit_base.html'
+    context = {
+        'form': form,
+        'base': base,
+    }
+
+    return render(request, template, context)
