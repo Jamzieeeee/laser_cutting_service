@@ -3,131 +3,127 @@
 
 {% block content %}
     <div class="container">
-        {% if request.user.is_superuser %}
-            <div class="row">
-                <div class="col">
-                    <h1>Product Management</h1>
-                </div>
+        <div class="row">
+            <div class="col mb-5">
+                <h1>Product Management</h1>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col mt-5">
-                    <h4 class="text-muted">Shapes</h4>
-                    <div class="table-responsive">
-                        <table class="table table-sm table-hover">
-                            <thead>
+        <div class="row">
+            <div class="col mb-5">
+                <h4 class="text-muted">Shapes</h4>
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th class="d-none d-sm-table-cell w-100">Description</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for shape in shapes %}
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th class="d-none d-sm-table-cell w-100">Description</th>
-                                    <th></th>
-                                    <th></th>
+                                    <td>{{ shape.id }}</td>
+                                    <td>{{ shape.name }}</td>
+                                    <td>{{ shape.description }}</td>
+                                    <td>
+                                        <a href="{% url 'edit_shape' shape.id %}" class="btn btn-sm">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'delete_shape' shape.id %}" class="btn btn-sm btn-delete">Delete</a>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {% for shape in shapes %}
-                                    <tr>
-                                        <td>{{ shape.id }}</td>
-                                        <td>{{ shape.name }}</td>
-                                        <td>{{ shape.description }}</td>
-                                        <td>
-                                            <a href="#" class="btn btn-sm">Edit</a>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-delete">Delete</a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="text-end">
-                        <a href="#" class="btn btn-filled">Add</a>
-                    </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-end">
+                    <a href="{% url 'add_shape' %}" class="btn btn-filled">Add</a>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col mt-5">
-                    <h4 class="text-muted">Bases</h4>
-                    <div class="table-responsive">
-                        <table class="table table-sm table-hover">
-                            <thead>
+        <div class="row">
+            <div class="col mb-5">
+                <h4 class="text-muted">Bases</h4>
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Shape</th>
+                                <th>Size</th>
+                                <th>No. per Sheet</th>
+                                <th class="d-none d-sm-table-cell w-100">Description</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for base in bases %}
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Shape</th>
-                                    <th>Size</th>
-                                    <th>No. per Sheet</th>
-                                    <th class="d-none d-sm-table-cell w-100">Description</th>
-                                    <th></th>
-                                    <th></th>
+                                    <td>{{ base.id }}</td>
+                                    <td>{{ base.shape }}</td>
+                                    <td>{{ base.size }}</td>
+                                    <td>{{ base.number_per_sheet }}</td>
+                                    <td>{{ base.description }}</td>
+                                    <td>
+                                        <a href="{% url 'edit_base' base.id %}" class="btn btn-sm">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'delete_base' base.id %}" class="btn btn-sm btn-delete">Delete</a>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {% for base in bases %}
-                                    <tr>
-                                        <td>{{ base.id }}</td>
-                                        <td>{{ base.shape }}</td>
-                                        <td>{{ base.size }}</td>
-                                        <td>{{ base.number_per_sheet }}</td>
-                                        <td>{{ base.description }}</td>
-                                        <td>
-                                            <a href="#" class="btn btn-sm">Edit</a>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-delete">Delete</a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="text-end">
-                        <a href="{% url 'add_base' %}" class="btn btn-filled">Add</a>
-                    </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-end">
+                    <a href="{% url 'add_base' %}" class="btn btn-filled">Add</a>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col mt-5">
-                    <h4 class="text-muted">Materials</h4>
-                    <div class="table-responsive">
-                        <table class="table table-sm table-hover">
-                            <thead>
+        <div class="row">
+            <div class="col mb-5">
+                <h4 class="text-muted">Materials</h4>
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Cost per Sheet</th>
+                                <th class="d-none d-sm-table-cell w-100">Description</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for material in materials %}
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Cost per Sheet</th>
-                                    <th class="d-none d-sm-table-cell w-100">Description</th>
-                                    <th></th>
-                                    <th></th>
+                                    <td>{{ material.id }}</td>
+                                    <td>{{ material.name }}</td>
+                                    <td>{{ material.cost_per_sheet }}</td>
+                                    <td>{{ material.description }}</td>
+                                    <td>
+                                        <a href="{% url 'edit_material' material.id %}" class="btn btn-sm">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'delete_material' material.id %}" class="btn btn-sm btn-delete">Delete</a>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {% for material in materials %}
-                                    <tr>
-                                        <td>{{ material.id }}</td>
-                                        <td>{{ material.name }}</td>
-                                        <td>{{ material.cost_per_sheet }}</td>
-                                        <td>{{ material.description }}</td>
-                                        <td>
-                                            <a href="#" class="btn btn-sm">Edit</a>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-delete">Delete</a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="text-end">
-                        <a href="#" class="btn btn-filled">Add</a>
-                    </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-end">
+                    <a href="{% url 'add_material' %}" class="btn btn-filled">Add</a>
                 </div>
             </div>
-        {% else %}
-            <p>You do not have permission to perform this operation!</p>
-        {% endif %}
+        </div>
     </div>
 {% endblock %}
