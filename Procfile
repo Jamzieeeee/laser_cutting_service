@@ -1,0 +1,1 @@
+web: gunicorn laser_cutting_service.wsgi:application

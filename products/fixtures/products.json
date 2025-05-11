@@ -1,0 +1,184 @@
+[
+  {
+    "model": "products.shape",
+    "pk": 1,
+    "fields": { "name": "Round", "description": "A circular base" }
+  },
+  {
+    "model": "products.shape",
+    "pk": 2,
+    "fields": { "name": "Square", "description": "A square base" }
+  },
+  {
+    "model": "products.shape",
+    "pk": 3,
+    "fields": { "name": "Oval", "description": "An oval base" }
+  },
+  {
+    "model": "products.shape",
+    "pk": 4,
+    "fields": { "name": "Rectangle", "description": "A rectangular base" }
+  },
+  {
+    "model": "products.base",
+    "pk": 3,
+    "fields": {
+      "shape": 1,
+      "size": "15mm",
+      "description": "Suitable for 10mm or smaller scale figures",
+      "number_per_sheet": "187",
+      "image": "15mmRound.jpg"
+    }
+  },
+  {
+    "model": "products.base",
+    "pk": 4,
+    "fields": {
+      "shape": 1,
+      "size": "20mm",
+      "description": "Suitable for 15-28mm scale infantry.",
+      "number_per_sheet": "117",
+      "image": "20mmRound.jpg"
+    }
+  },
+  {
+    "model": "products.base",
+    "pk": 5,
+    "fields": {
+      "shape": 2,
+      "size": "15mm",
+      "description": "Suitable for 10mm or smaller scale figures.",
+      "number_per_sheet": "187",
+      "image": "15mmSquare.jpg"
+    }
+  },
+  {
+    "model": "products.base",
+    "pk": 6,
+    "fields": {
+      "shape": 2,
+      "size": "20mm",
+      "description": "Suitable for 15-28mm scale infantry.",
+      "number_per_sheet": "117",
+      "image": "20mmSquare.jpg"
+    }
+  },
+  {
+    "model": "products.base",
+    "pk": 7,
+    "fields": {
+      "shape": 1,
+      "size": "25mm",
+      "description": "Suitable for 15-28mm scale infantry.",
+      "number_per_sheet": "70",
+      "image": "25mmRound.jpg"
+    }
+  },
+  {
+    "model": "products.base",
+    "pk": 8,
+    "fields": {
+      "shape": 1,
+      "size": "26mm",
+      "description": "Suitable for 15-28mm scale infantry (matches 2p pieces).",
+      "number_per_sheet": "70",
+      "image": "26mmRound.jpg"
+    }
+  },
+  {
+    "model": "products.base",
+    "pk": 9,
+    "fields": {
+      "shape": 1,
+      "size": "50mm",
+      "description": "Suitable for 28mm scale or larger heroes, monsters or leaders.",
+      "number_per_sheet": "15",
+      "image": "50mmRound.jpg"
+    }
+  },
+  {
+    "model": "products.base",
+    "pk": 10,
+    "fields": {
+      "shape": 3,
+      "size": "20x40mm",
+      "description": "Suitable for 15-20mm scale cavalry.",
+      "number_per_sheet": "63",
+      "image": "20x40mmOval.jpg"
+    }
+  },
+  {
+    "model": "products.base",
+    "pk": 11,
+    "fields": {
+      "shape": 3,
+      "size": "25x50mm",
+      "description": "Suitable for 28mm scale cavalry.",
+      "number_per_sheet": "35",
+      "image": "25x50mmOval.jpg"
+    }
+  },
+  {
+    "model": "products.base",
+    "pk": 12,
+    "fields": {
+      "shape": 2,
+      "size": "25mm",
+      "description": "Suitable for 15-28mm scale infantry.",
+      "number_per_sheet": "70",
+      "image": "25mmSquare.jpg"
+    }
+  },
+  {
+    "model": "products.base",
+    "pk": 13,
+    "fields": {
+      "shape": 4,
+      "size": "20x40mm",
+      "description": "Suitable for 15-20mm scale cavalry.",
+      "number_per_sheet": "63",
+      "image": "20x40mmRectangle.jpg"
+    }
+  },
+  {
+    "model": "products.base",
+    "pk": 14,
+    "fields": {
+      "shape": 4,
+      "size": "25x50mm",
+      "description": "Suitable for 28mm scale cavalry.",
+      "number_per_sheet": "35",
+      "image": "25x50mmRectangle.jpg"
+    }
+  },
+  {
+    "model": "products.material",
+    "pk": 2,
+    "fields": {
+      "name": "2mm MDF",
+      "cost_per_sheet": "200",
+      "description": "Non-toxic (E1 compliant) laser-grade MDF. Matches thickness of Flames of War, Renedra etc bases.",
+      "image": "2mm-laser-mdf.png"
+    }
+  },
+  {
+    "model": "products.material",
+    "pk": 3,
+    "fields": {
+      "name": "3mm MDF",
+      "cost_per_sheet": "300",
+      "description": "Non-toxic (E1 compliant) laser-grade MDF. Matches thickness of Warlord, Games Workshop etc bases.",
+      "image": "3mm-laser-mdf.png"
+    }
+  },
+  {
+    "model": "products.material",
+    "pk": 4,
+    "fields": {
+      "name": "3mm Acrylic",
+      "cost_per_sheet": "400",
+      "description": "Nominal 3mm (may vary by +/- 0.3mm) cast Perspex",
+      "image": "3mm-acrylic.png"
+    }
+  }
+]
