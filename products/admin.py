@@ -5,6 +5,7 @@ from .models import Shape, Base, Material
 class ShapeAdmin(admin.ModelAdmin):
     list_display = (
         'name',
+        'description',
     )
 
     ordering = ('name',)
@@ -14,6 +15,7 @@ class BaseAdmin(admin.ModelAdmin):
     list_display = (
         'size',
         'shape',
+        'description',
         'number_per_sheet',
         'image',
     )
@@ -24,6 +26,7 @@ class BaseAdmin(admin.ModelAdmin):
 class MaterialAdmin(admin.ModelAdmin):
     list_display = (
         'name',
+        'description',
         'cost_per_sheet',
     )
 

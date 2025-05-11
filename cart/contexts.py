@@ -1,5 +1,4 @@
 from django.conf import settings
-from decimal import Decimal
 from django.shortcuts import get_object_or_404
 import math
 from products.models import Base, Material
@@ -14,8 +13,14 @@ def cart_contents(request):
 
     for base_id, base_data in cart.items():
         for material_id, quantity in base_data.items():
-            base = get_object_or_404(Base, pk=base_id)
-            material = get_object_or_404(Material, pk=material_id)
+            try:
+                base=Base.objects.get(pk=base_id)
+            except Base.DoesNotExist:
+                continue
+            try:
+                material=Material.objects.get(pk=material_id)
+            except Material.DoesNotExist:
+                continue
             unit_price = (math.ceil(material.cost_per_sheet / base.number_per_sheet)) / 100
             price = quantity * unit_price
             total += price
