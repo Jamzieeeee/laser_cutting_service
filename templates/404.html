@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="mb-4">404</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h4 class="text-muted">The page you are looking for isn't available</h4>
+                <a href="{% url 'home' %}" class="btn btn=filled">Return to Homepage</a>
+            </div>            
+        </div>
+    </div>
+{% endblock %}

@@ -2,5 +2,58 @@
 {% load static %}
 
 {% block content %}
-    <h1 class="display-4 text-success">It works</h1>
+    <div class="container">
+        <div class="row justify-content-center text-center mb-4">
+            <div class="col">
+                <h1 class="display-4 text-success">High Quality Minature Bases</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-md-6">
+                <p>
+                    Mill House Studios provide laser cut bases for wargames miniatures in a range of sizes, materials and 
+                    thicknesses. These are accuractely cut using our XTool S1 precision diode laser cutter to ensure 
+                    clean edges and consistent dimensions.
+                </p>
+            </div>
+        </div>
+
+        <div class="row mb-4 justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4 text-center mb-4">
+                <h5>Options include</h5>
+                <ul>
+                    <li>Round, square, oval and rectangular bases</li>
+                    <li>Cut from your choice of thickness of MDF or acrylic</li>
+                    <li>Base sizes compatible with all major gaming systems</li>
+                    <li>Custom orders and bulk pricing available</li>
+                </ul>
+                <a href="{% url 'bases' %}" class="btn btn-lg btn-filled">Check out our Bases</a>
+            </div>
+            <div class="col-12 col-md-6 rounded-4 pt-3 highlight-box">
+                <img src="/media/laser-cutter.jpg" alt="XTool S1 precision diode laser cutter" class="img-fluid">
+                <p>
+                    Every base is cut with care and precision using state-of-the-art laser technology, 
+                    so your minis accurately match up to the specifications of the rule set you are using.
+                </p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center text-center mb-4">
+            <div class="col-12 col-md-6 col-lg-4">
+                <h3>Why Choose Us?</h3>
+                <ul>
+                    <li>Fast, reliable turnaround</li>
+                    <li>Competitive prices</li>
+                    <li>Made by wargamers for wargamers</li>
+                    <li>Custom designs available - if you don't see the base size and specification you require, 
+                        please don't hesitate to get in touch!</li>
+                </ul>
+                <a href="#" class="btn">Contact us</a>
+            </div>
+
+            
+        </div>
+    </div>
+    
+    
 {% endblock %}
