@@ -13,7 +13,7 @@
                     {% if base.image %}
                         <img class="card-img-top img-fluid" src="{{ base.image.url }}" alt="{{ base.size }} {{ base.shape }}">
                     {% else %}
-                        <img class="card-img-top img-fluid" src="{% static 'media/noimage.png' %}" alt="{{ base.size }} {{ base.shape }}">
+                        <img class="card-img-top img-fluid" src="{% static 'images/noimage.png' %}" alt="{{ base.size }} {{ base.shape }}">
                     {% endif %}
                     <div class="card-body">
                         <h6 class="mb-0">{{ base.size }} {{ base.shape }}</h6>
