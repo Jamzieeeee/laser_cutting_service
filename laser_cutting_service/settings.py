@@ -17,6 +17,9 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
+import django_heroku
+django_heroku.settings(locals())
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -203,6 +206,3 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 DEFAULT_FROM_EMAIL = 'millhouselaser@example.com'
 
-
-import django_heroku
-django_heroku.settings(locals())
