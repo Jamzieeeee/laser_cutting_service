@@ -28,3 +28,6 @@ class Material(models.Model):
 
     def __str__(self):
         return self.name
+
+    def cost_per_sheet_in_pounds(self):
+        return self.cost_per_sheet/100
