@@ -8,7 +8,11 @@ class BaseDetailForm(forms.ModelForm):
 
         fields = []
 
-    quantity = forms.IntegerField(label="Quantity")
+    quantity = forms.IntegerField(
+        label="Quantity", 
+        min_value=1,
+        max_value=999,
+        )
 
 
 class ShapeForm(forms.ModelForm):
