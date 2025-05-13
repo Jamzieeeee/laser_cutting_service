@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /cart/
+Disallow: /accounts/
+Sitemap: https://laser-cutting-service-1a2b1eda51df.herokuapp.com/sitemap.xml
