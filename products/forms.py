@@ -9,7 +9,7 @@ class BaseDetailForm(forms.ModelForm):
         fields = []
 
     quantity = forms.IntegerField(
-        label="Quantity", 
+        label="Quantity",
         min_value=1,
         max_value=999,
         )
