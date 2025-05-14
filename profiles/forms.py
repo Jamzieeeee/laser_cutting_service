@@ -6,6 +6,7 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ('user',)
+        labels = {'sub_to_newsletter': 'Subscribe to Newsletter'}
 
     def __init__(self, *args, **kwargs):
         """
@@ -24,10 +25,11 @@ class UserProfileForm(forms.ModelForm):
 
         self.fields['default_phone_number'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            if field != 'default_country':
+            if field != 'default_country' and field != 'sub_to_newsletter':
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].label = False
+            if field != 'sub_to_newsletter':
+                self.fields[field].label = False
