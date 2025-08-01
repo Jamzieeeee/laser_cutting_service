@@ -36,6 +36,12 @@
     border-color: black;
 }
 
+.btn-disabled {
+    color: dimgray;
+    background-color: grey;
+    border-color: dimgrey;
+}
+
 .btn:hover {
     background-color: lightgray;
 }

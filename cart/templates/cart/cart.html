@@ -53,9 +53,16 @@
                             <a href="{% url 'bases' %}" class="btn">
                                 <span class="text-uppercase">Keep Shopping</span>
                             </a>
-                            <a href="{% url "checkout" %}" class="btn btn-filled">
-                                <span class="text-uppercase">Secure Checkout</span>
-                            </a>
+                            {% if grand_total < 0.3 %}
+                                <button type="button" class="btn btn-disabled text-uppercase">Secure Checkout</button>
+                                <p class="mb-1 text-danger">
+                                    Grand total must be at least <strong>£0.30</strong> gbp!
+                                </p>
+                            {% else %}
+                                <a href="{% url "checkout" %}" class="btn btn-filled">
+                                    <span class="text-uppercase">Secure Checkout</span>
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 {% else %}
