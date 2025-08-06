@@ -50,7 +50,7 @@ def cart_contents(request):
         'delivery': delivery,
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
-        'grand_total': grand_total,
+        'grand_total': round(grand_total, 2),
     }
 
     return context

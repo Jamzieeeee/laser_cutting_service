@@ -56,7 +56,7 @@
                             {% if grand_total < 0.3 %}
                                 <button type="button" class="btn btn-disabled text-uppercase">Secure Checkout</button>
                                 <p class="mb-1 text-danger">
-                                    Grand total must be at least <strong>£0.30</strong> gbp!
+                                    Grand total must be at least <strong>£0.30</strong>!
                                 </p>
                             {% else %}
                                 <a href="{% url "checkout" %}" class="btn btn-filled">
