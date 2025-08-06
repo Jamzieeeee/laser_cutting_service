@@ -14,11 +14,11 @@ def cart_contents(request):
     for base_id, base_data in cart.items():
         for material_id, quantity in base_data.items():
             try:
-                base=Base.objects.get(pk=base_id)
+                base = Base.objects.get(pk=base_id)
             except Base.DoesNotExist:
                 continue
             try:
-                material=Material.objects.get(pk=material_id)
+                material = Material.objects.get(pk=material_id)
             except Material.DoesNotExist:
                 continue
             unit_price = (math.ceil(material.cost_per_sheet / base.number_per_sheet)) / 100
@@ -33,7 +33,7 @@ def cart_contents(request):
                 'price': price,
                 'total': total,
             })
-    
+
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD / 100 - total

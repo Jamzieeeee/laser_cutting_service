@@ -14,6 +14,7 @@ import stripe
 import json
 import math
 
+
 # Create your views here.
 @require_POST
 def cache_checkout_data(request):
@@ -30,7 +31,7 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
-    
+
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -83,7 +84,7 @@ def checkout(request):
         if not cart:
             messages.error(request, "Your cart is empty!")
             return redirect(reverse('products'))
-        
+
         current_cart = cart_contents(request)
         total = current_cart['grand_total']
         stripe_total = round(total * 100)
@@ -124,7 +125,7 @@ def checkout(request):
         }
 
         return render(request, template, context)
-    
+
 
 def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
@@ -154,7 +155,7 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
-    
+
     if 'cart' in request.session:
         del request.session['cart']
 

@@ -7,6 +7,7 @@ from checkout.models import Order
 
 from .forms import UserProfileForm
 
+
 # Create your views here.
 @login_required
 def profile(request):
@@ -18,7 +19,8 @@ def profile(request):
             form.save()
             messages.success(request, 'Profile updated successfully')
         else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
+            messages.error(request,
+                           'Update failed. Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
 
@@ -28,7 +30,7 @@ def profile(request):
         'form': form,
         'orders': orders,
     }
-    
+
     return render(request, template, context)
 
 

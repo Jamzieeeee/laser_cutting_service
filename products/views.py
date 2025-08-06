@@ -6,6 +6,7 @@ from .models import Shape, Base, Material
 from .forms import ShapeForm, BaseForm, MaterialForm, BaseDetailForm
 import math
 
+
 # Create your views here.
 def bases(request):
     products = Base.objects.all()
@@ -52,7 +53,7 @@ def product_admin(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
+
     shapes = Shape.objects.all()
     bases = Base.objects.all()
     materials = Material.objects.all()
@@ -72,7 +73,7 @@ def add_shape(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
+
     if request.method == 'POST':
         form = ShapeForm(request.POST, request.FILES)
         if form.is_valid():
@@ -97,16 +98,18 @@ def edit_shape(request, shape_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
+
     shape = get_object_or_404(Shape, pk=shape_id)
     if request.method == 'POST':
         form = ShapeForm(request.POST, request.FILES, instance=shape)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Successfully updated shape ID {shape_id}!')
+            messages.success(request,
+                             f'Successfully updated shape ID {shape_id}!')
             return redirect(reverse('product_admin'))
         else:
-            messages.error(request, 'Failed to update shape. Please ensure the form is valid.')
+            messages.error(request,
+                           'Failed to update shape. Please ensure the form is valid.')
     else:
         form = ShapeForm(instance=shape)
 
@@ -124,7 +127,7 @@ def delete_shape(request, shape_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-        
+
     shape = get_object_or_404(Shape, pk=shape_id)
     shape.delete()
     messages.success(request, f'Successfully deleted shape ID {shape_id}!')
@@ -137,7 +140,7 @@ def add_base(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
+
     if request.method == 'POST':
         form = BaseForm(request.POST, request.FILES)
         if form.is_valid():
@@ -162,7 +165,7 @@ def edit_base(request, base_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
+
     base = get_object_or_404(Base, pk=base_id)
     if request.method == 'POST':
         form = BaseForm(request.POST, request.FILES, instance=base)
@@ -189,7 +192,7 @@ def delete_base(request, base_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-        
+
     base = get_object_or_404(Base, pk=base_id)
     base.delete()
     messages.success(request, f'Successfully deleted base ID {base_id}!')
@@ -202,7 +205,7 @@ def add_material(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
+
     if request.method == 'POST':
         form = MaterialForm(request.POST, request.FILES)
         if form.is_valid():
@@ -253,9 +256,8 @@ def delete_material(request, material_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-        
+
     material = get_object_or_404(Material, pk=material_id)
     material.delete()
     messages.success(request, f'Successfully deleted material ID {material_id}!')
     return redirect(reverse('product_admin'))
-
